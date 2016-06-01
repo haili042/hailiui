@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: auto;
+    }
+
+    .row {
+      overflow: auto;
+      margin: 15px;;
+    }
+
+    .col-50 {
+      width: 50%;
+      float: left;
+    }
+
+    /*combobox style*/
+    .haili-combobox {
+      padding: 4px;
+      position: relative;
+      top: 6px;
+      left: 3px;
+    }
+
+    .haili-combobox-body {
+      border: 1px solid #ccc;
+      min-width: 160px;
+      max-height: 200px;
+      height: 200px;
+      overflow: auto;
+      position: absolute;
+      display: none;
+      z-index: 10000;
+      font-family: 微软雅黑, sans-serif, arial;
+    }
+
+    .haili-combobox-body > .query,
+    .haili-combobox-body > .body {
+      padding: 6px;
+    }
+
+    .haili-combobox-body > .query > input {
+      border: 1px solid #ccc;
+      width: 92%;
+      height: 20px;
+      border-radius: 10px;
+      padding: 0 4px;
+    }
+
+    .haili-combobox-body > .body > ul {
+      list-style: none;
+    }
+
+    .haili-combobox-body > .body > ul li {
+      padding: 2px;
+    }
+
+    .haili-combobox-body >.body > ul li:hover {
+      background: #456789;
+      color: #fff;
+      cursor: pointer;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-50">
+        <div style="height: 500px; margin-top: 30px;">
+          <input type="text" id="combobox" class="haili-combobox">
+        </div>
+      </div>
+
+      <div class="col-50"></div>
+    </div>
+  </div>
+
+
+
+<script src="./lib/jquery-1.6.4.js"></script>
+<script src="./src/haili.combobox.js"></script>
+<script>
+
+  $('#combobox').hailiCombobox({
+
+  });
+</script>
+</body>
+</html>
