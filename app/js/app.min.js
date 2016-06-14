@@ -47,31 +47,71 @@
 
             var settings = $.extend({}, defaults, opt); // extend options
 
-            /*===================== element defined =====================*/
-
-            // input element
-            var elem = this.$element;
-            elem.attr('readonly', 'readonly');
-
             // panel element
             var tpl = '' +
                 '<div class="haili-combobox-body">'+
                 '  <div class="query">'+
-                '    <input type="text" placeholder="search" value="43543543435">' +
+                '    <input type="text" placeholder="search">' +
                 '    <i class="fa fa-serach"></i>'+
                 '  </div>' +
                 '  <div class="body">'+
                 '    <ul></ul>'+
                 '  </div>'+
                 '</div>';
+
+            // generate item
+            var data = [{
+                value: '1',
+                text: 'text1'
+            }, {
+                value: '2',
+                text: 'text2'
+            }, {
+                value: '3',
+                text: 'text3'
+            }, {
+                value: '4',
+                text: 'text4'
+            }, {
+                value: '5',
+                text: 'text5'
+            }];
+
+
+            /*===================== element defined =====================*/
+
+            // input element
+            var elem = this.$element;
+            elem.attr('readonly', 'readonly');
+            elem.click(function(e) {
+                tplEle.toggle();
+            });
+
+            // panel element
             var tplEle = $(tpl);
             tplEle.attr('id', 'cbx' + new Date().getTime());
+            tplEle.click(function(e) {
+                e.stopPropagation();
+            });
 
             // ul element
-            var ulElem = tplEle.find('ul');
+            var ulElem = tplEle.find('.body ul');
+            // event proxy, onclick item
+            ulElem.click(function(e) {
+                var target = $(e.target), selectData = target.data();
+                elem.val(selectData[settings.textField]);
+                settings.onSelect(selectData, target);
+            });
 
-            // body element
+            // document.body element
             var bodyElem = $(document.body);
+            bodyElem.click(function(e) {
+                var target = e.target;
+
+                if (!$(target).hasClass('haili-combobox')) {
+                    tplEle.hide();
+                }
+            });
 
 
             /*===================== combobox panel position setting =====================*/
@@ -94,25 +134,6 @@
                 left: left
             });
 
-
-            // generate item
-            var data = [{
-                value: '1',
-                text: 'text1'
-            }, {
-                value: '2',
-                text: 'text2'
-            }, {
-                value: '3',
-                text: 'text3'
-            }, {
-                value: '4',
-                text: 'text4'
-            }, {
-                value: '5',
-                text: 'text5'
-            }];
-
             // generate data
             for (var i = 0, len = data.length; i < len; i++) {
                 var li = $('<li></li>');
@@ -121,29 +142,8 @@
                 ulElem.append(li);
             }
 
-            // event proxy, onclick item
-            ulElem.click(function(e) {
-                var target = $(e.target), selectData = target.data();
-                elem.val(selectData[settings.textField]);
-                settings.onSelect(selectData, target);
-            });
-
-            //
-            elem.click(function(e) {
-                tplEle.show();
-            });
-
-
+            // add to panel
             bodyElem.append(tplEle);
-
-            bodyElem.click(function(e) {
-                var target = e.target;
-
-                console.log(target.className);
-                if (!$(target).hasClass('haili-combobox')) {
-                    tplEle.hide();
-                }
-            });
 
         }
     };

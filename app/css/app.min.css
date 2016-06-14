@@ -1,12 +1,19 @@
+.drop-up-down {
+  width: 0;
+}
+
 /** combobox style **/
 .haili-combobox {
   padding: 4px;
   position: relative;
-  top: 6px;
-  left: 3px;
+  border-color: #aaa;
+  border: 1px solid #aaa;
+}
+.haili-combobox:hover {
+  cursor: pointer;
 }
 .haili-combobox-body {
-  border: 1px solid #ccc;
+  border: 1px solid #aaa;
   min-width: 160px;
   max-height: 200px;
   height: 200px;
@@ -16,25 +23,21 @@
   z-index: 10000;
   font-family: "微软雅黑", sans-serif, arial;
 }
-.haili-combobox-body > .query,
-.haili-combobox-body > .body {
-  padding: 6px;
-}
 .haili-combobox-body > .query input {
-  border: 1px solid #ccc;
-  width: 92%;
-  height: 20px;
-  border-radius: 10px;
-  padding: 0 4px;
+  border: 1px solid #aaa;
+  height: 24px;
 }
 .haili-combobox-body > .body > ul {
   list-style: none;
 }
 .haili-combobox-body > .body > ul li {
-  padding: 2px;
+  padding: 2px 8px;
+  height: 24px;
+  line-height: 24px;
 }
 .haili-combobox-body > .body > ul li:hover {
-  background: #456789;
+  background: #4cbeff;
   color: #fff;
   cursor: pointer;
 }
+
