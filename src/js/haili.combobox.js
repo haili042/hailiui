@@ -55,7 +55,8 @@
                 '    <i class="fa fa-serach"></i>'+
                 '  </div>' +
                 '  <div class="body">'+
-                '    <ul></ul>'+
+                '    <ul>' +
+                '    </ul>'+
                 '  </div>'+
                 '</div>';
 
